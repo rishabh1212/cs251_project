@@ -93,6 +93,10 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 
 codeDoc:
 
+report:
+	@pdflatex $(DOCDIR)/Beamer.tex
+	@pdflatex $(DOCDIR)/report.tex
+
 profile:
 	@gprof $(BINDIR)/cs251_base $(BINDIR)/gmon.out > $(BINDIR)/gprof.txt
 	@python $(SRCDIR)/gprof2dot.py $(BINDIR)/gprof.txt > $(BINDIR)/gprof.dot

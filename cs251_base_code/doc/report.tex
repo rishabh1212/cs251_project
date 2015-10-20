@@ -1,0 +1,40 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Lab09 Question 3}
+\author{Group 20}
+\maketitle
+
+The top 5 funtions in the debug version are
+\begin{itemize} 
+\item b2Vec2::b2Vec2(float, float)
+\item operator*(float, b2Vec2 const\&)
+\item b2ContactSolver::SolveVelocityConstraints()
+\item operator-(b2Vec2 const\&, b2Vec2 const\&)
+\item debug\_draw\_t::DrawSolidPolygon(b2Vec2 const*, int, b2Color const\&)
+\end{itemize}
+\begin{figure}[h]
+\centering\includegraphics[width=0.4\linewidth]{debugVersion}
+\caption{debug Version}
+\end{figure}
+The top 5 functions in the release version are
+\begin{itemize}
+\item operator-(b2Vec2 const\&, b2Vec2 const\&)
+\item b2Dot(b2Vec2 const\&, b2Vec2 const\&)
+\item b2Mul(b2Transform const\&, b2Vec2 const\&)
+\item b2DynamicTree::InsertLeaf(int)
+\item operator*(float, b2Vec2 const\&)
+\end{itemize}
+\begin{figure}[h]
+\centering\includegraphics[width=0.4\linewidth]{releaseVersion}
+\caption{release Version}
+\end{figure}
+Observations: \\
+\begin{enumerate}
+\item There are a lot of functions called in debug version than release version
+\item A function is called a several number times in debug version compared to release version
+\end{enumerate}
+\end{document}
