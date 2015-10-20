@@ -97,6 +97,8 @@ report:
 	@pdflatex $(DOCDIR)/Beamer.tex
 	@pdflatex $(DOCDIR)/report.tex
 
+release:
+
 profile:
 	@gprof $(BINDIR)/cs251_base $(BINDIR)/gmon.out > $(BINDIR)/gprof.txt
 	@python $(SRCDIR)/gprof2dot.py $(BINDIR)/gprof.txt > $(BINDIR)/gprof.dot
