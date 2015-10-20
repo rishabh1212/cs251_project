@@ -62,20 +62,28 @@ using namespace std;
     dominos_t::dominos_t()
     {
     //Ground
-    /*! \var b1
-     * \brief pointer to the body ground
+    /**
+     * \brief pointer to the body ground represents a line
      */
      //keyboard_up_cb(unsigned char key, int x, int y);
 
     {
-      //b2Body* b1;
+     /**
+     * \brief In line no. 70-79 var b22 is declared pointer to the body ground represents a line
+     */
+
       b2EdgeShape shape;
       shape.Set(b2Vec2(-90.0f, -50.0f), b2Vec2(900.0f, -50.0f));
       b2BodyDef bd;
       b22 = m_world->CreateBody(&bd);
       b22->CreateFixture(&shape, 0.0f);
     }
+
+
     {
+    /**
+     * \brief In line no. 83-93 var b1 is declared pointer to the body ground represents a verticle line
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(-90.0f, 0.0f), b2Vec2(-90.0f, 180.0f));
@@ -83,7 +91,12 @@ using namespace std;
       b1 = m_world->CreateBody(&bd);
       b1->CreateFixture(&shape, 0.0f);
     }
+
+
     {
+    /**
+     * \brief In line no. 96-106 var b1 is declared pointer to the body ground represents a top horizontal line
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(900.0f, 180.0f), b2Vec2(900.0f, 0.0f));
@@ -92,6 +105,9 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+    /**
+     * \brief In line no. 107-117 var b1 is declared pointer to the body ground represents a line
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(-90.0f, 180.0f), b2Vec2(900.0f, 180.0f));
@@ -102,6 +118,10 @@ using namespace std;
 
     //The see-saw system at the bottom
     {
+    /**
+     * \brief  In line 124-140 triangular wedge is made which acts as support to plank
+
+     */
       //The triangle wedge
       b2Body* tbody;
       b2PolygonShape poly;
@@ -120,6 +140,10 @@ using namespace std;
       tbody = m_world->CreateBody(&wedgebd);
       tbody->CreateFixture(&wedgefd);
 
+
+        /**
+     * \brief In line no. 148-167 The plank on top of the wedge is declared pointer
+     */
       //The plank on top of the wedge
       b2PolygonShape shape;
       shape.SetAsBox(20.0f, 0.1f);
@@ -144,6 +168,10 @@ using namespace std;
 
 
     {
+    /**
+     * \brief In line no. 175-180 var b1 is declared pointer to the body ground represents a horizontal line which is connected to wedge
+     */
+
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(-90.0f, 40.0f), b2Vec2(10.0f, 40.0f));
@@ -153,6 +181,10 @@ using namespace std;
     }
 
     {
+
+    /**
+     * \brief In line no. 188-194 var b1 is declared pointer to the body ground represents a verticle line
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(37.0f, 40.0f), b2Vec2(50.0f, 40.0f));
@@ -161,6 +193,9 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+    /**
+     * \brief In line no. 199-205 var b1 is declared pointer to the body ground represents a slant incline
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(50.0f, 40.0f), b2Vec2(80.0f, 50.0f));
@@ -169,6 +204,10 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+
+    /**
+     * \brief In line no. 211-216 var b1 is declared pointer to the body ground represents a slant incline
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(80.0f, 40.0f), b2Vec2(110.0f, 20.0f));
@@ -177,6 +216,10 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+
+    /**
+     * \brief In line no. 223-229 var b1 is declared pointer to the body ground represents a horizontal line connected to lower slant incline
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(110.0f, 20.0f), b2Vec2(209.40f, 20.0f));
@@ -185,6 +228,9 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+    /**
+     * \brief In line no. 234-240 var b1 is declared pointer to the body ground represents a horizontal line
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(150.0f, 40.0f), b2Vec2(210.0f, 40.0f));
@@ -194,6 +240,9 @@ using namespace std;
     }
 
     {
+    /**
+     * \brief In line no. 83-93 var b1 is declared pointer to the body ground represents a horizonatal line which has 4 rectangular blocks
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(280.0f, 40.0f), b2Vec2(230.0f, 40.0f));
@@ -202,6 +251,9 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+    /**
+     * \brief In line no. 257-263 var b1 is declared pointer to the body ground represents a horizontal line which acts as support to left side of pulley
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(210.0f, 19.0f), b2Vec2(230.0f, 19.0f));
@@ -210,6 +262,9 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+    /**
+     * \brief In line no. 268-275 var b1 is declared pointer to the body ground represents a verticle line at the end of track
+     */
       b2Body* b1;
       b2EdgeShape shape;
       shape.Set(b2Vec2(280.0f, 40.0f), b2Vec2(280.0f, 90.0f));
@@ -218,6 +273,9 @@ using namespace std;
       b1->CreateFixture(&shape, 0.0f);
     }
     {
+    /**
+     * \brief In line no. 279-295 var sqbody51 is declared pointer to the body which is rectangular and is below top horizontal platform containing a ball
+     */
     b2PolygonShape shape;
       shape.SetAsBox(0.8f, 0.8f);
 
@@ -242,6 +300,9 @@ using namespace std;
 
 
     {
+    /**
+     * \brief In line no. 83-93 var b1 is declared pointer to the body ground represents a verticle line
+     */
       b2BodyDef *bdz = new b2BodyDef;
       bdz->type = b2_dynamicBody;
       bdz->position.Set(245,15);
@@ -679,11 +740,6 @@ sbody->SetAngularVelocity(3);
 
     }
 }
-
-
-
-void dominos_t::sed1()
-{if (st == GLUT_UP){}}
 
   sim_t *sim = new sim_t("Dominos project \nKeys:Acelerate=q;deccelerate=w;stop=h;\nrotate=i", dominos_t::create);
 }

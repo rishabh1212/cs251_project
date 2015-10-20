@@ -39,6 +39,7 @@ namespace cs251
 
   b2Vec2 callbacks_t::convert_screen_to_world(int32 x, int32 y)
   {
+   //! This converts scrren co-ordinates to world.
     float32 u = x / static_cast<float32>(tw);
     float32 v = (th - y) / float32(th);
 
@@ -82,13 +83,7 @@ namespace cs251
     gluOrtho2D(lower.x, upper.x, lower.y, upper.y);
   }
 
- /*void callbacks_t::x1_cb( int32 x, int32 y){
- B2_NOT_USED(x);
-    B2_NOT_USED(y);
- view_zoom = b2Min(1.1f * view_zoom, 20.0f);
-      resize_cb(width, height);
 
- }*/
  void callbacks_t::keyboard_cb(unsigned char key, int x, int y)
   {
     //! What are these?
@@ -136,6 +131,7 @@ namespace cs251
 
   void callbacks_t::keyboard_special_cb(int key, int x, int y)
   {
+  //! This is function which pan window in desired way using arrow keys.
     B2_NOT_USED(x);
     B2_NOT_USED(y);
 
@@ -178,6 +174,7 @@ namespace cs251
 
   void callbacks_t::keyboard_up_cb(unsigned char key, int x, int y)
   {
+
     B2_NOT_USED(x);
     B2_NOT_USED(y);
 
@@ -186,7 +183,7 @@ namespace cs251
 	test->keyboard_up(key);
       }
   }
-  b2Vec2 gravity(0.0f,-10.0f);b2World m_world(gravity);
+
   void callbacks_t::mouse_cb(int32 button, int32 state, int32 x, int32 y)
   {
     //! Use the mouse to move things around - figure out how this works?
@@ -256,8 +253,12 @@ namespace cs251
 
   void callbacks_t::timer_cb(int)
   {
+    //! Sets the window
     glutSetWindow(main_window);
+
+
     glutPostRedisplay();
+    //! invokes the timer function calculates the time .
     glutTimerFunc(frame_period, timer_cb, 0);
   }
 
@@ -298,22 +299,19 @@ namespace cs251
 
   void callbacks_t::x1_cb(int)
   {
-    //delete test;
-    //entry = cs251::sim;
-    //test = entry->create_fcn();
+    //! Zoom_out button
     view_zoom = b2Min(1.1f * view_zoom, 20.0f);
     resize_cb(width, height);
   }
   void callbacks_t::x2_cb(int)
   {
-    //delete test;
-    //entry = cs251::sim;
-    //test = entry->create_fcn();
+    //! Zoom_in button
     view_zoom = b2Max(0.9f * view_zoom, 0.02f);
     resize_cb(width, height);
   }
   void callbacks_t::restart_cb(int)
   {
+    //! restarts the simulation
     delete test;
     entry = cs251::sim;
     test = entry->create_fcn();

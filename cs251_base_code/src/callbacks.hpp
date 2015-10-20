@@ -37,7 +37,6 @@ namespace cs251
   //! This gets called when the window is resized. Passed as parameters
   //! are the current window width and height.
   static void resize_cb(int32 w, int32 h);
- // static void Key_board(unsigned char key,int x,int y);
 
   //! GLUT keyboard callback
   //! This gets called whenever a key is pressed
@@ -48,8 +47,15 @@ namespace cs251
 
   //! Another keyboard callback? Why is this necessary? Is this used?
   static void keyboard_up_cb(unsigned char key, int x, int y);
+
+  //! Function which is invoked when clicked on "Zoom_out" button.
+  //! It "magnifies"
   static void x1_cb(int);
+
+  //! Function which is invoked when clicked on "Zoom_in" button.
+  //! It "minimizes"
   static void x2_cb(int);
+
   //! GLUT mouse callback
   //! This is called when a mouse button is pressed
   static void mouse_cb(int32 button, int32 state, int32 x, int32 y);

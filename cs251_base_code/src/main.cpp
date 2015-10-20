@@ -103,12 +103,26 @@ void create_glui_ui(void)
   glui->add_checkbox_to_panel(drawPanel, "Profile", &settings.draw_profile);
 
   new GLUI_Column( glui, false );
+
+  //! Addition of a pause button which invokes pause_cb.essentially pauses the simulation.
   glui->add_button("Pause", 0, callbacks_t::pause_cb);
+
+  //! Addition of single step button.
   glui->add_button("Single Step", 0, callbacks_t::single_step_cb);
+
+  //! Addition of Restart button which restarts the simulation.
   glui->add_button("Restart", 0, callbacks_t::restart_cb);
+
+  //! Addition of Zoom_out button which invokes x1_cb.
   glui->add_button("Zoom_out", 0, callbacks_t::x1_cb);
+
+  //! Addition of Zoom_in button which invokes x2_cb.
   glui->add_button("Zoom_in", 0, callbacks_t::x2_cb);
+
+  //! Addition of Quit button which exits the window.
   glui->add_button("Quit", 0,(GLUI_Update_CB)callbacks_t::exit_cb);
+
+  //! Sets the Window
   glui->set_main_gfx_window( main_window );
 }
 
@@ -136,11 +150,14 @@ int main(int argc, char** argv)
   //! Some are set via GLUI
   GLUI_Master.set_glutReshapeFunc(callbacks_t::resize_cb);
   GLUI_Master.set_glutKeyboardFunc(callbacks_t::keyboard_cb);
-  GLUI_Master.set_glutKeyboardFunc(dominos_t::Key_board);
+
   GLUI_Master.set_glutSpecialFunc(callbacks_t::keyboard_special_cb);
   GLUI_Master.set_glutMouseFunc(callbacks_t::mouse_cb);
-  //GLUI_Master.set_glutSpecialFunc(Car::Key__board1);
-  //GLUI_Master.set_glutKeyboardFunc(Car::key__board);
+
+  //! Here we setup all the callbacks from dominos we need.
+  //! Some are set via GLUI.
+  //! These are essentially introduction of a mouse click and buttons for the movement of car.
+  GLUI_Master.set_glutKeyboardFunc(dominos_t::Key_board);
   GLUI_Master.set_glutMouseFunc(dominos_t::sed);
   //! Others are set directly
   //glutKeyboardFunc(dominos_t::Key_board);

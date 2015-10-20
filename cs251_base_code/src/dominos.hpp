@@ -41,64 +41,39 @@ namespace cs251
 {
   //! This is the class that sets up the Box2D simulation world
   //! Notice the public inheritance - why do we inherit the base_sim_t class?
-  class x : public base_sim_t
-  {public:
-  enum _moveState {
-    MS_STOP,
-    MS_LEFT,
-    MS_RIGHT,
-  };
-   b2Body* body;
-  _moveState moveState;
 
-  x() ;
-  };
 
 
   class dominos_t : public base_sim_t//,public callbacks_t
   {
+
   public:
    //b2Body* sbody;
    //b2Vec2 vel;
     //static b2Body* body;
      //static b2Body* ssbody;static b2BodyDef swedgebd;static b2FixtureDef swedgefd;
+    //! This is the constructor of dominos_t
     dominos_t();
 
    // void d() {body->SetLinearVelocity(sbody->GetLinearVelocity());}
+   //! This is defination of static function which is invoked on pressing certain special key.
  static void Key_board(unsigned char key,int32 x,int32 y);
 
   //sbody->SetLinearVelocity(vel);
+  //! this is defination of a static function which is invoked on pressing mouse button.
  static void sed(int32 button,int32 state,int x32,int32 y);
- void sed1();
+
 
 
     //static void Keyboard(unsigned char key,int x,int y);
-
+    //! This creates the box2d simulation.
     static base_sim_t* create()
     {
+    //! this is function which creates box2d simulation
       return new dominos_t;
     }
   };
-
-  class Car : public base_sim_t
-{
-public:
-	Car();
-
-
-	// static void Key__board1(int key,int x,int y);
-	 //static void key__board(unsigned char,int x,int y);
-
-
-	 //void Step(settings_t* settings);
-
-
-	static base_sim_t* create()
-	{
-		return new Car;
-	}
-
-	};
 }
+
 
 #endif
