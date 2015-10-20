@@ -21,6 +21,7 @@ SRCDIR = $(PROJECT_ROOT)/src
 OBJDIR = $(PROJECT_ROOT)/obj
 BINDIR = $(PROJECT_ROOT)/bin
 DOCDIR = $(PROJECT_ROOT)/doc
+PRODIR = $(PROJECT_ROOT)/profile
 
 # Library Paths
 BOX2D_ROOT=$(EXTERNAL_ROOT)
@@ -57,7 +58,7 @@ INCS := $(wildcard $(SRCDIR)/*.hpp)
 OBJS := $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 
-.PHONY: all setup doc clean distclean
+.PHONY: all setup doc clean distclean profile
 
 all: setup $(BINDIR)/$(TARGET)
 
@@ -89,6 +90,8 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	else printf "${OK_COLOR}%30s\n${NO_COLOR}" "[OK]"; \
 	fi;
 	@$(RM) -f temp.log temp.err
+
+codeDoc:
 
 profile:
 	@gprof $(BINDIR)/cs251_base $(BINDIR)/gmon.out > $(BINDIR)/gprof.txt
