@@ -192,6 +192,7 @@ using namespace std;
       b1 = m_world->CreateBody(&bd);
       b1->CreateFixture(&shape, 0.0f);
     }
+
     {
       b2Body* b1;
       b2EdgeShape shape;
@@ -392,6 +393,72 @@ using namespace std;
       b2Body* sqbody5 = m_world->CreateBody(&bd1);
 	  sqbody5->CreateFixture(&fd);
 
+
+    }
+    {
+    b2PolygonShape shape;
+      shape.SetAsBox(25.0f, 0.7f);
+
+      b2FixtureDef fd;
+      fd.shape = &shape;
+      fd.density = 5.0f;
+      fd.friction = 0.1f;
+
+
+
+	  b2BodyDef bd1;
+	  bd1.type = b2_dynamicBody;
+	  bd1.position.Set(172,40.2);
+      b2Body* sqbody5 = m_world->CreateBody(&bd1);
+	  sqbody5->CreateFixture(&fd);
+
+
+    }
+    {
+      b2PolygonShape sshape;
+      sshape.SetAsBox(8.2f, 0.2f);
+
+      b2BodyDef bbd;
+      bbd.position.Set(110.0f+0.3f*(69.4)+14.0f, 50.0f);
+      bbd.type = b2_dynamicBody;
+      b2Body* bbody = m_world->CreateBody(&bbd);
+      b2FixtureDef *fd = new b2FixtureDef;
+      fd->density = 1.f;
+      fd->shape = new b2PolygonShape;
+      fd->shape = &sshape;
+      bbody->CreateFixture(fd);
+
+      b2PolygonShape sshape2;
+      sshape2.SetAsBox(0.2f, 2.0f);
+      b2BodyDef bbd2;
+      bbd2.position.Set(110.0f+0.3f*(69.4)+14.0f, 52.0f);
+      b2Body* bbody2 = m_world->CreateBody(&bbd2);
+
+      b2RevoluteJointDef jointDeef;
+      jointDeef.bodyA = bbody;
+      jointDeef.bodyB = bbody2;
+      jointDeef.localAnchorA.Set(0,0);
+      jointDeef.localAnchorB.Set(0,0);
+      jointDeef.collideConnected = false;
+      m_world->CreateJoint(&jointDeef);
+    }
+
+    //The heavy sphere on the platform
+    {
+      b2Body* ssbody;
+      b2CircleShape circle;
+      circle.m_radius = 1.0;
+
+      b2FixtureDef ballfd;
+      ballfd.shape = &circle;
+      ballfd.density = 20.0f;
+      ballfd.friction = 0.0f;
+      ballfd.restitution = 0.0f;
+      b2BodyDef ballbd;
+      ballbd.type = b2_dynamicBody;
+      ballbd.position.Set(110.0f+0.3f*(69.4)+14.0f, 54.0f);
+      ssbody = m_world->CreateBody(&ballbd);
+      ssbody->CreateFixture(&ballfd);
     }
 
 
@@ -608,7 +675,9 @@ sbody->SetAngularVelocity(3);
     if(button==GLUT_LEFT_BUTTON&&state==GLUT_DOWN) sbody->SetTransform(p1,re);
 
       if(button==GLUT_LEFT_BUTTON&&state==GLUT_DOWN)sbody->SetAwake(true);
+    if(button==GLUT_RIGHT_BUTTON&&state==GLUT_DOWN){
 
+    }
 }
 
 
