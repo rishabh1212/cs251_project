@@ -48,7 +48,8 @@ namespace cs251
 
   //! Another keyboard callback? Why is this necessary? Is this used?
   static void keyboard_up_cb(unsigned char key, int x, int y);
-
+  static void x1_cb(int);
+  static void x2_cb(int);
   //! GLUT mouse callback
   //! This is called when a mouse button is pressed
   static void mouse_cb(int32 button, int32 state, int32 x, int32 y);

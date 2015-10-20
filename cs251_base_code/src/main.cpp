@@ -106,7 +106,8 @@ void create_glui_ui(void)
   glui->add_button("Pause", 0, callbacks_t::pause_cb);
   glui->add_button("Single Step", 0, callbacks_t::single_step_cb);
   glui->add_button("Restart", 0, callbacks_t::restart_cb);
-
+  glui->add_button("Zoom_out", 0, callbacks_t::x1_cb);
+  glui->add_button("Zoom_in", 0, callbacks_t::x2_cb);
   glui->add_button("Quit", 0,(GLUI_Update_CB)callbacks_t::exit_cb);
   glui->set_main_gfx_window( main_window );
 }

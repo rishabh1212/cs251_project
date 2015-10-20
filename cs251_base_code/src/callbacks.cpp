@@ -82,7 +82,13 @@ namespace cs251
     gluOrtho2D(lower.x, upper.x, lower.y, upper.y);
   }
 
+ /*void callbacks_t::x1_cb( int32 x, int32 y){
+ B2_NOT_USED(x);
+    B2_NOT_USED(y);
+ view_zoom = b2Min(1.1f * view_zoom, 20.0f);
+      resize_cb(width, height);
 
+ }*/
  void callbacks_t::keyboard_cb(unsigned char key, int x, int y)
   {
     //! What are these?
@@ -290,7 +296,22 @@ namespace cs251
   }
 
 
-
+  void callbacks_t::x1_cb(int)
+  {
+    //delete test;
+    //entry = cs251::sim;
+    //test = entry->create_fcn();
+    view_zoom = b2Min(1.1f * view_zoom, 20.0f);
+    resize_cb(width, height);
+  }
+  void callbacks_t::x2_cb(int)
+  {
+    //delete test;
+    //entry = cs251::sim;
+    //test = entry->create_fcn();
+    view_zoom = b2Max(0.9f * view_zoom, 0.02f);
+    resize_cb(width, height);
+  }
   void callbacks_t::restart_cb(int)
   {
     delete test;
