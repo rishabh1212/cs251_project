@@ -91,20 +91,20 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	fi;
 	@$(RM) -f temp.log temp.err
 
-codeDoc:
-
 report:
-	@pdflatex $(DOCDIR)/Beamer.tex
+	@pdflatex $(DOCDIR)/presentation.tex
+	@mv -v presentation.pdf $(DOCDIR)/presentation.pdf
 	@pdflatex $(DOCDIR)/report.tex
+	@mv -v report.pdf $(DOCDIR)/report.pdf
 
 release:
 
 profile:
 	@gprof $(BINDIR)/cs251_base $(BINDIR)/gmon.out > $(BINDIR)/gprof.txt
 	@python $(SRCDIR)/gprof2dot.py $(BINDIR)/gprof.txt > $(BINDIR)/gprof.dot
-	@dot -Tpng $(BINDIR)/gprof.dot -o profile.png 
+	@dot -Tpng $(BINDIR)/gprof.dot -o $(BINDIR)/profile.png 
 
-doc:
+codeDoc:
 	@$(ECHO) -n "Generating Doxygen Documentation ...  "
 	@$(RM) -rf doc/html
 	@$(DOXYGEN) $(DOCDIR)/Doxyfile 2 > /dev/null
@@ -112,8 +112,8 @@ doc:
 
 clean:
 	@$(ECHO) -n "Cleaning up..."
-	@$(RM) -rf $(OBJDIR) *~ $(DEPS) $(SRCDIR)/*~
+	@$(RM) -rf $(OBJDIR) *~ $(DEPS) $(SRCDIR)/*~  $(PROJECT_ROOT)/presentation* $(PROJECT_ROOT)/report*
 	@$(ECHO) "Done"
 
 distclean: clean
-	@$(RM) -rf $(BINDIR) $(DOCDIR)/html
+	@$(RM) -rf $(BINDIR) 
