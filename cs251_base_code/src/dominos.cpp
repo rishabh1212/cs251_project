@@ -334,13 +334,18 @@ using namespace std;
       bs3.SetAsBox(0.2,2.5, b2Vec2(-10.0f,-7.50f), 0);
       fd3z->shape = &bs3;
 
-
+      /**
+     * \brief In line no. 340-343 var box1 is declared pointer to the body open rectangular box right side of pulley
+     */
       b2Body* box1 = m_world->CreateBody(bdz);
       box1->CreateFixture(fd1z);
       box1->CreateFixture(fd2z);
       box1->CreateFixture(fd3z);
 
       //The bar
+      /**
+     * \brief In line no. 349-361 var box2 is declared pointer to the body bar to the left side of pulley
+     */
       bdz->position.Set(220,30);
       bs1.SetAsBox(10,0.2, b2Vec2(0.0f,-10.0f), 0);
       fd1z->shape = &bs1;
@@ -356,16 +361,22 @@ using namespace std;
       box2->CreateFixture(fd3z);
 
       // The pulley joint
+      /**
+     * \brief In line no. 83-93 var b1 is declared pointer to the body ground represents a verticle line
+     */
+
       b2PulleyJointDef* myjoint = new b2PulleyJointDef();
-      b2Vec2 worldAnchorOnBody2(220, 20); // Anchor point on body 1 in world axis
-      b2Vec2 worldAnchorOnBody1(245, 15); // Anchor point on body 2 in world axis
-      b2Vec2 worldAnchorGround2(220, 45); // Anchor point for ground 1 in world axis
-      b2Vec2 worldAnchorGround1(245, 45); // Anchor point for ground 2 in world axis
-      float32 ratio = 1.0f; // Define ratio
+      b2Vec2 worldAnchorOnBody2(220, 20); //! Anchor point on body 1 in world axis
+      b2Vec2 worldAnchorOnBody1(245, 15); //! Anchor point on body 2 in world axis
+      b2Vec2 worldAnchorGround2(220, 45); //! Anchor point for ground 1 in world axis
+      b2Vec2 worldAnchorGround1(245, 45); //! Anchor point for ground 2 in world axis
+      float32 ratio = 1.0f; //! Define ratio
       myjoint->Initialize(box1, box2, worldAnchorGround1, worldAnchorGround2, box1->GetWorldCenter(), box2->GetWorldCenter(), ratio);
       m_world->CreateJoint(myjoint);
 
-
+       /**
+     * \brief In line no. 381-410 represents declaration of 6 spherebodies on left pulley
+     */
 
       b2CircleShape circle;
       circle.m_radius = 3.0f;
@@ -404,40 +415,11 @@ using namespace std;
 
 
 
-    /*{
-    b2PolygonShape shape;
-      shape.SetAsBox(18.8f, 0.8f);
 
-      b2FixtureDef fd;
-      fd.shape = &shape;
-      fd.density = 20.0f;
-      fd.friction = 0.1f;
-	  b2BodyDef bd1;
-	  //bd1.type = b2_dynamicBody;
-	  bd1.position.Set(110.0f+0.3f*(69.4), 41.0-0.3*(4.5));
-      b2Body* sqbody5 = m_world->CreateBody(&bd1);
-	  sqbody5->CreateFixture(&fd);
-
-	  b2CircleShape cicle;
-      cicle.m_radius = 0.95;
-      b2FixtureDef ballfdc;
-      ballfdc.shape = &cicle;
-      ballfdc.density = 1.0f;
-      ballfdc.friction = 0.70f;
-      ballfdc.restitution = 0.5f;
-
-      b2BodyDef ballbdc;
-	  ballbdc.type = b2_dynamicBody;
-	  ballbdc.position.Set(110.0f+0.3f*(69.4)-19.6, 41.0-0.3*(4.0));
-	  b2Body* cspherebody1 = m_world->CreateBody(&ballbdc);
-	  cspherebody1->CreateFixture(&ballfdc);
-	  cspherebody1->SetAngularVelocity(5);
-	  ballbdc.position.Set(110.0f+0.3f*(69.4)+19.6, 41.0-0.3*(4.0));
-	  b2Body* cspherebody2 = m_world->CreateBody(&ballbdc);
-	  cspherebody2->CreateFixture(&ballfdc);
-      cspherebody2->SetAngularVelocity(5);
-    }*/
     {
+    /**
+     * \brief In line no. 423-437 represents the platform below the top platform is static
+     */
     b2PolygonShape shape;
       shape.SetAsBox(20.8f, 1.2f);
 
@@ -457,6 +439,9 @@ using namespace std;
 
     }
     {
+    /**
+     * \brief In line no. 445-460 represents the platform below the top platform is movable
+     */
     b2PolygonShape shape;
       shape.SetAsBox(25.0f, 0.7f);
 
@@ -475,7 +460,9 @@ using namespace std;
 
 
     }
-    {
+    {/**
+     * \brief In line no. 466-491 represents top platform
+     */
       b2PolygonShape sshape;
       sshape.SetAsBox(8.2f, 0.2f);
 
@@ -506,6 +493,9 @@ using namespace std;
 
     //The heavy sphere on the platform
     {
+    /**
+     * \brief In line no. 499-513 represents heavy sphere on the top platform
+     */
       b2Body* ssbody;
       b2CircleShape circle;
       circle.m_radius = 1.0;
@@ -524,7 +514,11 @@ using namespace std;
 
 
 
-{b2BodyDef bodyDeff;
+{
+/**
+     * \brief In line no. 521-551 represents flexible string
+     */
+b2BodyDef bodyDeff;
 bodyDeff.type = b2_staticBody;
 b2Vec2 k(10.0f,40.0f);
 bodyDeff.position=k;
@@ -546,7 +540,9 @@ bodyDeff.position=kl;
 if(i==89){bodyDeff.type=b2_staticBody;}
 b2Body* newLink = m_world->CreateBody( &bodyDeff );
 newLink->CreateFixture( &fixtureDeff );
-
+/**
+     * \brief In line no. 547-549 represents revolute joint between links of flexible string
+     */
 
 revoluteJointDeff.bodyA = link;
 revoluteJointDeff.bodyB = newLink;
@@ -557,7 +553,9 @@ link = newLink;
 }
 
     {
-
+/**
+     * \brief In line no. 560-580 represents the upper body of the car
+     */
 
       b2PolygonShape poly;
       b2Vec2 vertices[5];
@@ -580,7 +578,9 @@ link = newLink;
       sbody->CreateFixture(&wedgefd);
       vel=sbody->GetLinearVelocity();
       vel.x=0.0f;vel.y=0.0f;
-
+      /**
+     * \brief In line no. 585 - 684 represents the lower body of car which are two wheels and tow bar connecting wheel and upperbody
+     */
 
       b2CircleShape circle;
       circle.m_radius = 0.7;
@@ -621,6 +621,10 @@ if(i==0){ body5 = m_world->CreateBody(&bd1);
 else{ body55 = m_world->CreateBody(&bd1);
 	  body55->CreateFixture(&fd);}
 
+
+        /**
+     * \brief In line no. 628=-634 represents revolut joint between wheel and bar
+     */
 	  b2RevoluteJointDef jd;
       b2Vec2 anchor;
       anchor.Set(-82.6f + i*5.2f, 89.7f);
@@ -628,6 +632,10 @@ else{ body55 = m_world->CreateBody(&bd1);
       else jd.Initialize(spherebody2, body55, anchor);
       m_world->CreateJoint(&jd);
 
+
+/**
+     * \brief In line no. 639-657 represents prismatic joint between bar and upperbody of car
+     */
 b2PrismaticJointDef jointDef;
 b2Vec2 worldAxis(0.0f, 1.0f);
 
@@ -665,26 +673,41 @@ m_world->CreateJoint(&jointDef);
 
     switch (key)
     {
+      /**
+     * \brief for key equal to 'q' accelerate
+     */
       case 'q': //move left
         vel.x=0.5f;vel.y=0.0f;
         x1=false;y1=false;
 
         break;
+         /**
+     * \brief for key equal to 'w' deccelerate
+     */
       case 'w': //stop
         vel.x=-.5f;vel.y=0.0f;
         x1=true;y1=false;
 
         break;
+         /**
+     * \brief for key equal to 'e' zero angular velocity
+     */
       case 'e': //move right
         sbody->SetAngularVelocity(0);
         x1=true;y1=true;
 
         break;
+         /**
+     * \brief for key equal to 'h' stop
+     */
       case 'h':
         vel.x=0;vel.y=0;
         sbody->SetLinearVelocity( vel );
         sbody->SetAngularVelocity(0);
         break;
+         /**
+     * \brief for key equal to 'i' sets angular velocity to 3.0f
+     */
        case 'i':
 sbody->SetAngularVelocity(3);
        break;
@@ -697,6 +720,7 @@ sbody->SetAngularVelocity(3);
     force = spherebody1->GetMass() * vel.x / (1/1000.0);
     b2Vec2 cir2=spherebody1->GetPosition();
     cir2.y=cir2.y+0.5f;
+
     spherebody1->ApplyForce( b2Vec2(force,0.0f), cir2 ,true);
     vel.x=0;vel.y=0;
     }
@@ -707,7 +731,9 @@ sbody->SetAngularVelocity(3);
     p.x=10;p.y=10;
 
     float re=sbody->GetAngle();
-
+     /**
+     * \brief for left click displaces body 10.0f in x-direction and 10.0f in y-direction
+     */
 
     b2Vec2 p1=sbody->GetPosition();
     p1.x=p1.x+p.x;
@@ -741,5 +767,5 @@ sbody->SetAngularVelocity(3);
     }
 }
 
-  sim_t *sim = new sim_t("Dominos project \nKeys:Acelerate=q;deccelerate=w;stop=h;\nrotate=i", dominos_t::create);
+  sim_t *sim = new sim_t("Dominos project Car", dominos_t::create);
 }

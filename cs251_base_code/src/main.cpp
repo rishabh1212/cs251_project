@@ -122,6 +122,18 @@ void create_glui_ui(void)
   //! Addition of Quit button which exits the window.
   glui->add_button("Quit", 0,(GLUI_Update_CB)callbacks_t::exit_cb);
 
+  new GLUI_Column( glui, false );
+  //! Addition of new column for presenting user manual
+  glui->add_statictext("User Manual");
+  glui->add_statictext("Press key 'h' to stop");
+  glui->add_statictext("Press key 'q' to accelerate");
+  glui->add_statictext("Press key 'w' to deccelerate");
+  glui->add_statictext("Press key 'e' to stop rotation");
+  glui->add_statictext("Press key 'i' to set angular velocity to 3.0");
+  glui->add_statictext("Left click to translate body by 10.0 in x and y-direction respectively");
+
+
+
   //! Sets the Window
   glui->set_main_gfx_window( main_window );
 }

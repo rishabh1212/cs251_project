@@ -116,4 +116,4 @@ clean:
 	@$(ECHO) "Done"
 
 distclean: clean
-	@$(RM) -rf $(BINDIR) 
+	@$(RM) -rf $(BINDIR) $(DOCDIR)/html $(DOCDIR)/presentation.pdf $(DOCDIR)/report.pdf

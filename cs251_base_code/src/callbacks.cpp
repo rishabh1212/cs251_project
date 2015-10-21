@@ -27,8 +27,8 @@ namespace cs251
   cs251::sim_t* entry;
   cs251::base_sim_t* test;
   cs251::settings_t settings;
-  int32 width = 640;
-  int32 height = 480;
+  int32 width = 800;
+  int32 height = 600;
   int32 frame_period = 16;
   int32 main_window;
   float settings_hz = 60.0;
@@ -191,17 +191,17 @@ namespace cs251
       {
 	int mod = glutGetModifiers();
 	b2Vec2 p = convert_screen_to_world(x, y);
-  b2Body* b;
+  //b2Body* b;
 
 
       b2EdgeShape shape;p.x=-90.0f;p.y=0.0f;
       shape.Set(b2Vec2(p.x, p.y), b2Vec2(90.0f, 0.0f));
-      b2BodyDef bd;
-      b = m_world.CreateBody(&bd);
-      b->CreateFixture(&shape, 0.0f);
+      //b2BodyDef bd;
+      //b = m_world.CreateBody(&bd);
+     // b->CreateFixture(&shape, 0.0f);
 
-    float32 timestep=1.0f/60.0f;
-    int32 v=6;int32 pook=2;m_world.Step(timestep,v,pook);
+    //float32 timestep=1.0f/60.0f;
+    //int32 v=6;int32 pook=2;m_world.Step(timestep,v,pook);
 	if (state == GLUT_DOWN)
 	  {
 	    b2Vec2 p = convert_screen_to_world(x, y);
